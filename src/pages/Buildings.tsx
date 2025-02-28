@@ -48,7 +48,7 @@ import {
   Trash, 
   FileText,
   MapPin,
-  SquareGantt,
+  LayoutGrid,
   BarChart3,
   Settings,
   ChevronRight
@@ -222,7 +222,7 @@ const Buildings = () => {
             size="icon"
             onClick={() => setViewMode('grid')}
           >
-            <SquareGantt className="h-4 w-4" />
+            <LayoutGrid className="h-4 w-4" />
           </Button>
           <Button
             variant={viewMode === 'table' ? 'default' : 'outline'}
@@ -316,7 +316,7 @@ const Buildings = () => {
                             </span>
                           </div>
                           <div className="flex items-center">
-                            <SquareGantt className="h-4 w-4 mr-2 text-carbon-gray-400" />
+                            <LayoutGrid className="h-4 w-4 mr-2 text-carbon-gray-400" />
                             <span className="text-carbon-gray-600 dark:text-carbon-gray-400">
                               {building.area.toLocaleString()} m²
                             </span>
