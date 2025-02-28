@@ -9,6 +9,7 @@ import NotFound from "./pages/NotFound";
 import Organization from "./pages/Organization";
 import Buildings from "./pages/Buildings";
 import DataCollection from "./pages/DataCollection";
+import Parameters from "./pages/Parameters";
 import { ThemeProvider } from "./hooks/use-theme";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/organization" element={<Organization />} />
             <Route path="/buildings" element={<Buildings />} />
             <Route path="/data-collection" element={<DataCollection />} />
+            <Route path="/parameters" element={<Parameters />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

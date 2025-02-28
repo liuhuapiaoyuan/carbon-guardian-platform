@@ -44,7 +44,8 @@ import {
   WifiIcon,
   Globe,
   Lock,
-  Server
+  Server,
+  DownloadIcon
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -822,7 +823,7 @@ const ApiIntegration = () => {
             </CardContent>
             <CardFooter className="flex justify-between">
               <Button variant="outline">
-                <Download className="h-4 w-4 mr-2" />
+                <DownloadIcon className="h-4 w-4 mr-2" />
                 下载完整API文档
               </Button>
               <Button>

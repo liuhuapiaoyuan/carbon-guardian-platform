@@ -35,7 +35,7 @@ import {
   Zap, 
   Droplets, 
   Flame, 
-  Flask, 
+  TestTube, 
   Fuel,
   CalendarIcon, 
   Building, 
@@ -94,7 +94,7 @@ const dataTypeConfig = {
     ],
   },
   chemical: {
-    icon: <Flask className="h-5 w-5" />,
+    icon: <TestTube className="h-5 w-5" />,
     title: '药剂用量',
     color: 'text-purple-500',
     bgColor: 'bg-purple-100',
