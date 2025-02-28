@@ -554,10 +554,18 @@ const Parameters = () => {
 
   const onSubmit = (values: z.infer<typeof parameterFormSchema>) => {
     if (dialogMode === 'add') {
+      // Fix: Ensuring all required fields are provided
       const newParameter: Parameter = {
         id: parameters.length > 0 ? Math.max(...parameters.map(p => p.id)) + 1 : 1,
-        ...values,
+        category: values.category,       // Required field
+        name: values.name,               // Required field
+        unit: values.unit,               // Required field
+        uploadRequirement: values.uploadRequirement, // Required field
+        subcategory: values.subcategory, // Optional field
+        emissionFormula: values.emissionFormula, // Optional field
+        description: values.description  // Optional field
       };
+      
       setParameters([...parameters, newParameter]);
       toast({
         title: '添加成功',
@@ -565,7 +573,16 @@ const Parameters = () => {
       });
     } else if (dialogMode === 'edit' && editingParameter) {
       setParameters(parameters.map(param => 
-        param.id === editingParameter.id ? { ...param, ...values } : param
+        param.id === editingParameter.id ? { 
+          ...param, 
+          category: values.category,
+          name: values.name,
+          unit: values.unit,
+          uploadRequirement: values.uploadRequirement,
+          subcategory: values.subcategory,
+          emissionFormula: values.emissionFormula,
+          description: values.description
+        } : param
       ));
       toast({
         title: '更新成功',
