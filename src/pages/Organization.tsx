@@ -4,17 +4,7 @@ import MainLayout from '@/components/layout/MainLayout';
 import { PageHeader } from '@/components/shared/PageHeader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { 
-  Building2, 
-  Search, 
-  Plus, 
-  ChevronRight, 
-  MapPin, 
-  Users, 
-  Edit, 
-  Trash,
-  ChevronDown 
-} from 'lucide-react';
+import { Search, Plus, Edit, Trash } from 'lucide-react';
 import {
   Table,
   TableBody,
@@ -30,7 +20,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Label } from '@/components/ui/label';
 import { 
@@ -41,16 +30,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from '@/lib/utils';
-
-interface OrganizationNode {
-  id: string;
-  name: string;
-  code: string;
-  type: 'province' | 'city' | 'county' | 'organization' | 'building';
-  responsible: string;
-  location: string;
-  children?: OrganizationNode[];
-}
+import { OrganizationTreeNode, OrganizationNode, getTypeIcon } from '@/components/organization/OrganizationTree';
 
 const sampleData: OrganizationNode[] = [
   {
@@ -136,75 +116,6 @@ const sampleData: OrganizationNode[] = [
     ]
   }
 ];
-
-const OrganizationTreeNode = ({ 
-  node, 
-  level = 0,
-  onSelectNode,
-  selectedNodeId
-}: { 
-  node: OrganizationNode; 
-  level?: number;
-  onSelectNode: (node: OrganizationNode) => void;
-  selectedNodeId: string | null;
-}) => {
-  const [expanded, setExpanded] = useState(level < 1);
-  const hasChildren = node.children && node.children.length > 0;
-  
-  const getTypeIcon = (type: OrganizationNode['type']) => {
-    switch (type) {
-      case 'building':
-        return <Building2 className="h-4 w-4 text-carbon-green-500" />;
-      case 'organization':
-        return <Users className="h-4 w-4 text-blue-500" />;
-      default:
-        return <MapPin className="h-4 w-4 text-amber-500" />;
-    }
-  };
-
-  return (
-    <div>
-      <div 
-        className={cn(
-          "flex items-center py-2 px-3 rounded-md cursor-pointer group",
-          selectedNodeId === node.id ? "bg-carbon-green-100 dark:bg-carbon-green-900/30" : "hover:bg-carbon-gray-100 dark:hover:bg-carbon-gray-800/30"
-        )}
-        onClick={() => onSelectNode(node)}
-      >
-        <div 
-          className="mr-1.5 cursor-pointer" 
-          onClick={(e) => {
-            e.stopPropagation();
-            setExpanded(!expanded);
-          }}
-        >
-          {hasChildren && (
-            expanded ? 
-              <ChevronDown className="h-3.5 w-3.5 text-carbon-gray-500" /> : 
-              <ChevronRight className="h-3.5 w-3.5 text-carbon-gray-500" />
-          )}
-        </div>
-        <div className="mr-2">{getTypeIcon(node.type)}</div>
-        <div className="flex-1 truncate text-sm">
-          {node.name}
-        </div>
-      </div>
-      {expanded && hasChildren && (
-        <div className="pl-6 border-l border-dashed border-carbon-gray-200 dark:border-carbon-gray-800 ml-4">
-          {node.children?.map((child) => (
-            <OrganizationTreeNode 
-              key={child.id} 
-              node={child} 
-              level={level + 1}
-              onSelectNode={onSelectNode}
-              selectedNodeId={selectedNodeId}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
 
 const Organization = () => {
   const [searchTerm, setSearchTerm] = useState('');
