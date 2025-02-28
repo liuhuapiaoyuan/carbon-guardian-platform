@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Organization from "./pages/Organization";
 import Buildings from "./pages/Buildings";
+import DataCollection from "./pages/DataCollection";
 import { ThemeProvider } from "./hooks/use-theme";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/organization" element={<Organization />} />
             <Route path="/buildings" element={<Buildings />} />
+            <Route path="/data-collection" element={<DataCollection />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
