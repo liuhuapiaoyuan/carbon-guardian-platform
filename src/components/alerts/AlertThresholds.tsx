@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -253,7 +252,11 @@ const AlertThresholds = () => {
         level: newRule.level as ThresholdRule['level'],
         value: Number(newRule.value),
         isActive: newRule.isActive === undefined ? true : newRule.isActive,
-        notifications: newRule.notifications || { sms: false, email: true, system: true }
+        notifications: {
+          sms: newRule.notifications?.sms ?? false,
+          email: newRule.notifications?.email ?? true, 
+          system: newRule.notifications?.system ?? true
+        }
       } as ThresholdRule]);
       toast({
         title: '规则已添加',
@@ -492,7 +495,11 @@ const AlertThresholds = () => {
                             checked={newRule.notifications?.sms || false}
                             onCheckedChange={(checked) => setNewRule({
                               ...newRule, 
-                              notifications: {...(newRule.notifications || {}), sms: checked}
+                              notifications: {
+                                sms: checked,
+                                email: newRule.notifications?.email ?? true,
+                                system: newRule.notifications?.system ?? true
+                              }
                             })}
                           />
                           <label htmlFor="sms-notification" className="text-sm">短信通知</label>
@@ -503,7 +510,11 @@ const AlertThresholds = () => {
                             checked={newRule.notifications?.email || false}
                             onCheckedChange={(checked) => setNewRule({
                               ...newRule, 
-                              notifications: {...(newRule.notifications || {}), email: checked}
+                              notifications: {
+                                sms: newRule.notifications?.sms ?? false,
+                                email: checked,
+                                system: newRule.notifications?.system ?? true
+                              }
                             })}
                           />
                           <label htmlFor="email-notification" className="text-sm">邮件通知</label>
@@ -514,7 +525,11 @@ const AlertThresholds = () => {
                             checked={newRule.notifications?.system || false}
                             onCheckedChange={(checked) => setNewRule({
                               ...newRule, 
-                              notifications: {...(newRule.notifications || {}), system: checked}
+                              notifications: {
+                                sms: newRule.notifications?.sms ?? false,
+                                email: newRule.notifications?.email ?? true,
+                                system: checked
+                              }
                             })}
                           />
                           <label htmlFor="system-notification" className="text-sm">系统消息</label>
@@ -653,7 +668,11 @@ const AlertThresholds = () => {
                             checked={newRule.notifications?.sms || false}
                             onCheckedChange={(checked) => setNewRule({
                               ...newRule, 
-                              notifications: {...(newRule.notifications || {}), sms: checked}
+                              notifications: {
+                                sms: checked,
+                                email: newRule.notifications?.email ?? true,
+                                system: newRule.notifications?.system ?? true
+                              }
                             })}
                           />
                           <label htmlFor="edit-sms-notification" className="text-sm">短信通知</label>
@@ -664,7 +683,11 @@ const AlertThresholds = () => {
                             checked={newRule.notifications?.email || false}
                             onCheckedChange={(checked) => setNewRule({
                               ...newRule, 
-                              notifications: {...(newRule.notifications || {}), email: checked}
+                              notifications: {
+                                sms: newRule.notifications?.sms ?? false,
+                                email: checked,
+                                system: newRule.notifications?.system ?? true
+                              }
                             })}
                           />
                           <label htmlFor="edit-email-notification" className="text-sm">邮件通知</label>
@@ -675,7 +698,11 @@ const AlertThresholds = () => {
                             checked={newRule.notifications?.system || false}
                             onCheckedChange={(checked) => setNewRule({
                               ...newRule, 
-                              notifications: {...(newRule.notifications || {}), system: checked}
+                              notifications: {
+                                sms: newRule.notifications?.sms ?? false,
+                                email: newRule.notifications?.email ?? true,
+                                system: checked
+                              }
                             })}
                           />
                           <label htmlFor="edit-system-notification" className="text-sm">系统消息</label>
