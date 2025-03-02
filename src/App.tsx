@@ -11,6 +11,7 @@ import Buildings from "./pages/Buildings";
 import DataCollection from "./pages/DataCollection";
 import Parameters from "./pages/Parameters";
 import CarbonSink from "./pages/CarbonSink";
+import AlertsAndTasks from "./pages/AlertsAndTasks";
 import { ThemeProvider } from "./hooks/use-theme";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/data-collection" element={<DataCollection />} />
             <Route path="/parameters" element={<Parameters />} />
             <Route path="/carbon-sink" element={<CarbonSink />} />
+            <Route path="/alerts-and-tasks" element={<AlertsAndTasks />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
