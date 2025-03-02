@@ -12,6 +12,7 @@ import DataCollection from "./pages/DataCollection";
 import Parameters from "./pages/Parameters";
 import CarbonSink from "./pages/CarbonSink";
 import AlertsAndTasks from "./pages/AlertsAndTasks";
+import DataVisualization from "./pages/DataVisualization";
 import { ThemeProvider } from "./hooks/use-theme";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/parameters" element={<Parameters />} />
             <Route path="/carbon-sink" element={<CarbonSink />} />
             <Route path="/alerts" element={<AlertsAndTasks />} />
+            <Route path="/data-visualization" element={<DataVisualization />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
