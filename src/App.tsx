@@ -30,7 +30,7 @@ const App = () => (
             <Route path="/data-collection" element={<DataCollection />} />
             <Route path="/parameters" element={<Parameters />} />
             <Route path="/carbon-sink" element={<CarbonSink />} />
-            <Route path="/alerts-and-tasks" element={<AlertsAndTasks />} />
+            <Route path="/alerts" element={<AlertsAndTasks />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

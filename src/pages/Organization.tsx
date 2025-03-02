@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { PageHeader } from '@/components/shared/PageHeader';
@@ -30,92 +29,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from '@/lib/utils';
-import { OrganizationTreeNode, OrganizationNode, getTypeIcon } from '@/components/organization/OrganizationTree';
-
-const sampleData: OrganizationNode[] = [
-  {
-    id: '1',
-    name: '福建省',
-    code: 'FJ001',
-    type: 'province',
-    responsible: '张三',
-    location: '福建省福州市',
-    children: [
-      {
-        id: '1-1',
-        name: '福州市',
-        code: 'FZ001',
-        type: 'city',
-        responsible: '李四',
-        location: '福建省福州市',
-        children: [
-          {
-            id: '1-1-1',
-            name: '鼓楼区',
-            code: 'GL001',
-            type: 'county',
-            responsible: '王五',
-            location: '福建省福州市鼓楼区',
-            children: [
-              {
-                id: '1-1-1-1',
-                name: '福建省环保厅',
-                code: 'HPT001',
-                type: 'organization',
-                responsible: '赵六',
-                location: '福建省福州市鼓楼区八一七北路',
-                children: [
-                  {
-                    id: '1-1-1-1-1',
-                    name: '主楼',
-                    code: 'ZL001',
-                    type: 'building',
-                    responsible: '钱七',
-                    location: '福建省福州市鼓楼区八一七北路1号',
-                  },
-                  {
-                    id: '1-1-1-1-2',
-                    name: '附楼',
-                    code: 'FL001',
-                    type: 'building',
-                    responsible: '孙八',
-                    location: '福建省福州市鼓楼区八一七北路1号',
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            id: '1-1-2',
-            name: '台江区',
-            code: 'TJ001',
-            type: 'county',
-            responsible: '周九',
-            location: '福建省福州市台江区',
-          }
-        ]
-      },
-      {
-        id: '1-2',
-        name: '厦门市',
-        code: 'XM001',
-        type: 'city',
-        responsible: '吴十',
-        location: '福建省厦门市',
-        children: [
-          {
-            id: '1-2-1',
-            name: '思明区',
-            code: 'SM001',
-            type: 'county',
-            responsible: '郑十一',
-            location: '福建省厦门市思明区',
-          }
-        ]
-      }
-    ]
-  }
-];
+import { OrganizationTree, OrganizationNode, getTypeIcon, organizationData } from '@/components/organization/OrganizationTree';
 
 const Organization = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -172,14 +86,10 @@ const Organization = () => {
               />
             </div>
             <div className="border rounded-md bg-carbon-gray-50 dark:bg-carbon-gray-900/30 overflow-y-auto h-[calc(100vh-320px)]">
-              {sampleData.map((node) => (
-                <OrganizationTreeNode 
-                  key={node.id} 
-                  node={node}
-                  onSelectNode={handleSelectNode}
-                  selectedNodeId={selectedNode?.id || null}
-                />
-              ))}
+              <OrganizationTree
+                onSelectNode={handleSelectNode}
+                selectedNodeId={selectedNode?.id || null}
+              />
             </div>
           </div>
         </div>
